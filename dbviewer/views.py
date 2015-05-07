@@ -7,4 +7,4 @@ def index():
     connection = pymongo.MongoClient()
     dbs = connection.database_names()
 
-    return render_template("index.html", text=str(dbs))
+    return render_template("index.html", dbs=dbs)
