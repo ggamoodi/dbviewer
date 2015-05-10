@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block contents %}
+    {% for collection in collections %}
+        <li>
+            <a href="{{ url_for('get_data', db=db, collection=collection) }}">{{ collection }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}
