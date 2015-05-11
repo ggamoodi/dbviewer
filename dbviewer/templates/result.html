@@ -2,9 +2,9 @@
 {% block contents %}
     <div>
         <ul>
-            {% for db in dbs %}
+            {% for item in result %}
                 <li>
-                    <a href="{{ url_for('get_collections', db=db) }}">{{ db }}</a>
+                    <p>{{ item }}</p>
                 </li>
             {% endfor %}
         </ul>

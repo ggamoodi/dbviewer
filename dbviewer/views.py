@@ -1,5 +1,6 @@
 from dbviewer import app
 from flask import render_template
+from flask import request
 import pymongo
 
 client = pymongo.MongoClient()
@@ -17,8 +18,23 @@ def get_collections(db):
     return render_template("collections.html", db=db, collections=sorted(collections))
 
 @app.route('/<db>/<collection>/')
+def find_form(db, collection):
+    collection = client.get_database(db).get_collection(collection)
+
+    return render_template("find_form.html", db=db, collection=collection.name)
+
+@app.route('/<db>/<collection>/find/', methods=['POST'])
 def get_data(db, collection):
     collection = client.get_database(db).get_collection(collection)
-    result = collection.find().limit(10)
+    key = request.form['key']
+    value = request.form['value']
+    type = request.form['type']
 
-    return render_template("data.html", result=result)
+    if type == "int":
+        result = collection.find({key: int(value)})
+    else:
+        result = collection.find({key: value})
+
+    print({key: value})
+
+    return render_template("result.html", db=db, collection=collection, result=result)

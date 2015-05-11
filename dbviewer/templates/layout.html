@@ -6,20 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
 
-    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <!--<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">-->
 </head>
 <body>
 <div>
-    <div>
-        <ul>
-            {% block contents %}
-            {% endblock %}
-        </ul>
-    </div>
+    {% block contents %}
+    {% endblock %}
 </div>
 
 
-<script src="{{ url_for('static', filename='js/jquery-2.1.4.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+<!--<script src="{{ url_for('static', filename='js/jquery-2.1.4.js') }}"></script>-->
+<!--<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>-->
 </body>
 </html>
